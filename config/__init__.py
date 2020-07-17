@@ -1,0 +1,1 @@
+SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUnC6XewKf0qjQvPdsSzSK4Y-DfB_0HRvTuDLeysB1L_R3Id5w/exec?startDate={}&endDate={}&title={}&guests={}'
