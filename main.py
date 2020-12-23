@@ -15,6 +15,20 @@ def insert(collection):
     return jsonify({})
 
 
+@app.route('/api/<collection>/<id>', methods=['PATCH'])
+def update(collection, id):
+    firestore_io = FirestoreIO()
+    firestore_io.update(collection, id, request.get_json())
+    return jsonify({})
+
+
+@app.route('/api/<collection>', methods=['GET'])
+def get_all(collection):
+    firestore_io = FirestoreIO()
+    docs = firestore_io.list(collection)
+    return jsonify(docs)
+
+
 @app.route('/api/<collection>/<id>', methods=['DELETE'])
 def delete(collection, id):
     firestore_io = FirestoreIO()

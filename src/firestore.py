@@ -19,6 +19,19 @@ class FirestoreIO:
     def delete(self, collection, id):
         self.db.collection(collection).document(id).delete()
 
+    def update(self, collection, id, payload):
+        doc = self.db.collection(collection).document(id)
+        doc.update(payload)
+
+    def list(self, collection):
+        docs = self.db.collection(collection).stream()
+        doc_list = []
+        for doc in docs:
+            doc_dict = doc.to_dict()
+            doc_dict['id'] = doc.id
+            doc_list.append(doc_dict)
+        return doc_list
+
     def list_users(self):
         users = []
         page = auth.list_users()
